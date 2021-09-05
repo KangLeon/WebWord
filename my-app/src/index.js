@@ -1,13 +1,6 @@
 import React from 'react';//确保JSX语法的解析
 import ReactDOM from 'react-dom';
 
-import App from './App';
+import TodoList from './TodoList';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <div>
-    <App />
-    </div>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+ReactDOM.render(<TodoList />,document.getElementById('root'));
