@@ -8,7 +8,31 @@
 </head>
 <body>
     <script>
-        
+        class Person {
+            constructor(name,age) {
+                this.age = age;
+                this.name = name;
+            }
+
+            running() {
+                console.log(this);
+                console.log(this.name,this.age,"running");
+            }
+        }
+
+        const p = new Person("why", 18);
+        console.log(p.name,p.age);
+        p.running();
+
+        const func = p.running;
+        func();
+
+        var obj = {
+            name: "kobe",
+            age: 40
+        }
+        func.call(obj);
+
     </script>
 </body>
 </html>
