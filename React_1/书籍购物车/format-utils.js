@@ -4,5 +4,5 @@ function formatPrice (price) {
         price = Number("aaa") || 0;
     }
 
-    return "¥" + price.toFixed(2); 
+    return "¥ " + price.toFixed(2); 
 }

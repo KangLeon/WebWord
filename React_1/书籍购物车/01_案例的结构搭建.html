@@ -88,7 +88,7 @@
                     }
                 }
 
-                render() {
+                renderBooks() {
                     return (
                         <div>
                             <table>
@@ -121,7 +121,15 @@
                                                     <button>+</button>
                                                 </td>
                                                 <td>
-                                                    <button>移除</button>
+                                                    <button
+                                                        onClick={(e) =>
+                                                            this.removeBook(
+                                                                index
+                                                            )
+                                                        }
+                                                    >
+                                                        移除
+                                                    </button>
                                                 </td>
                                             </tr>
                                         )
@@ -133,11 +141,40 @@
                     )
                 }
 
+                renderEmpty() {
+                    return <h2>购物车为空～</h2>
+                }
+
+                render() {
+                    return this.state.books.length
+                        ? this.renderBooks()
+                        : this.renderEmpty()
+                }
+
+                removeBook(index) {
+                    this.setState({
+                        books: this.state.books.filter(
+                            (item, indey) => index != indey
+                        ),
+                    })
+                }
+
                 getTotalPrice() {
-                    let totalPrice = 0
-                    for (const item of this.state.books) {
-                        totalPrice = item.price + item.count
-                    }
+                    ////for循环的方式
+                    //let totalPrice = 0
+                    //for (const item of this.state.books) {
+                    //    totalPrice = item.price + item.count
+                    //}
+                    //return formatPrice(totalPrice)
+
+                    //数组方法
+                    const totalPrice = this.state.books.reduce(
+                        (preValue, item) => {
+                            return preValue + item.price * item.count
+                        },
+                        0
+                    )
+
                     return formatPrice(totalPrice)
                 }
             }
