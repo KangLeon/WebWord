@@ -114,11 +114,32 @@
                                                     {formatPrice(item.price)}
                                                 </td>
                                                 <td>
-                                                    <button>-</button>
+                                                    <button
+                                                        disable={
+                                                            item.count <= 0
+                                                        }
+                                                        onClick={(e) =>
+                                                            this.changeBookCount(
+                                                                index,
+                                                                -1
+                                                            )
+                                                        }
+                                                    >
+                                                        -
+                                                    </button>
                                                     <span className="count">
                                                         {item.count}
                                                     </span>
-                                                    <button>+</button>
+                                                    <button
+                                                        onClick={(e) =>
+                                                            this.changeBookCount(
+                                                                index,
+                                                                1
+                                                            )
+                                                        }
+                                                    >
+                                                        +
+                                                    </button>
                                                 </td>
                                                 <td>
                                                     <button
@@ -149,6 +170,14 @@
                     return this.state.books.length
                         ? this.renderBooks()
                         : this.renderEmpty()
+                }
+
+                changeBookCount(index, count) {
+                    const newBooks = [...this.state.books]
+                    newBooks[index].count += count
+                    this.setState({
+                        books: newBooks,
+                    })
                 }
 
                 removeBook(index) {
