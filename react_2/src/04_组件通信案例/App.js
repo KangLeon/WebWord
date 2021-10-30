@@ -3,9 +3,10 @@ import TabControl from './TabControl'
 
 export default class App extends Component {
     render() {
-        return <div>
-            <TabControl titles="['新款','','']">
-        </div>
+        return (
+            <div>
+                <TabControl titles="['新款','精选','流行']" />
+            </div>
+        )
     }
 }
-
