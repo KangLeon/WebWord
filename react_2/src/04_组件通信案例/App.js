@@ -5,8 +5,11 @@ export default class App extends Component {
     constructor(props) {
         super(props)
 
+        this.titles = ['新款', '精选', '流行']
+
         this.state = {
             currentTitle: '新款',
+            currentIndex: 0,
         }
     }
 
@@ -16,7 +19,7 @@ export default class App extends Component {
             <div>
                 <TabControl
                     itemClick={(index) => this.itemClick(index)}
-                    titles={['新款', '精选', '流行']}
+                    titles={this.titles}
                 />
                 <h2>{currentTitle}</h2>
             </div>
